@@ -32,14 +32,14 @@
 
 		test("Adding two numbers in string format",function(){
 			//arrange
-			var number1 = "10", number2 = "20";
+			var number1 = "10", number2 = "a";
 
 			//act
 			var result = add(number1,number2);
 
 			//assert
 			console.log(result);
-			return result === 30;
+			return result === 10;
 		});
 
 		test("Adding more than one number",function(){
