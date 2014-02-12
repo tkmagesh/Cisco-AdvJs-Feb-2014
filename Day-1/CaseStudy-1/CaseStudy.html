@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript Study</title>
+	<style>
+	.pass {
+		color : green;
+	}
+	.fail {
+		color : red;
+		font-weight: bold;
+		font-style: italic;
+		text-decoration: line-through;
+	}
+	</style>
+	<script src="testUtil.js"></script>
+	<script src="calculator.js"></script>
+	<script>
+	window.addEventListener("DOMContentLoaded",init);
+	function init(){
+		test("Adding two numbers",function(){
+			//arrange
+			var number1 = 10, number2 = 20;
+
+			//act
+			var result = add(number1,number2);
+
+			//assert
+			return result === 30;
+		});
+
+		test("Adding two numbers in string format",function(){
+			//arrange
+			var number1 = "10", number2 = "20";
+
+			//act
+			var result = add(number1,number2);
+
+			//assert
+			console.log(result);
+			return result === 30;
+		});
+
+		test("Adding more than one number",function(){
+			//arrange
+
+			//act
+			var result = add(10,20,30,40);
+
+			//assert
+			console.log(result);
+			return result === 100;
+		});
+
+		test("Should return 0 when no arguments are passed",function(){
+			//arrange
+
+			//act
+			var result = add();
+
+			//assert
+			console.log(result);
+			return result === 0;
+		});
+
+		test("Should be able to add an array of numbers",function(){
+			//arrange
+
+			//act
+			var result = add([10,20,30,40]);
+
+			//assert
+			console.log(result);
+			return result === 100;
+		});
+
+		test("Should be able to add a nested array of numbers",function(){
+			//arrange
+
+			//act
+			var result = add([10,[20,[30,40]]]);
+
+			//assert
+			console.log(result);
+			return result === 100;
+		});
+
+		test("Should be able to add functions returning numbers",function(){
+			//arrange
+			var f1 = function(){ return 10;},
+				f2 = function(){ return 20;};
+			//act
+			var result = add(f1,f2);
+
+			//assert
+			console.log(result);
+			return result === 30;
+		});
+		
+		test("Should be able to add functions returning array of numbers",function(){
+			//arrange
+			var f1 = function(){ return [10,20];},
+				f2 = function(){ return [30,40];};
+			//act
+			var result = add(f1,f2);
+
+			//assert
+			console.log(result);
+			return result === 100;
+		});
+
+		test("Should be able to add array of functions returning array of numbers",function(){
+			//arrange
+			var f1 = function(){ return [10,20];},
+				f2 = function(){ return [30,40];};
+			//act
+			var result = add([f1,f2]);
+
+			//assert
+			console.log(result);
+			return result === 100;
+		});
+	}
+	</script>
+</head>
+<body>
+	<ul id="ulTestCaseList">
+		
+
+	</ul>
+</body>
+</html>
