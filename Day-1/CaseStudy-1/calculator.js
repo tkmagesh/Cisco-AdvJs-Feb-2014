@@ -1,17 +1,9 @@
 function add(){
 	function parseArg(n){
-		if (!!n.length && typeof n !== "string"){
-			var result = 0;
-			for(var i=0;i<n.length;i++)
-				result += parseArg(n[i]);
-			return result;
-		}
+		if (!!n && !!n.length && typeof n !== "string") return add.apply(this,n)
 		if (typeof n === "function") return parseArg(n());
-		if (isNaN(n)) return 0;
-		return parseInt(n);	
+		return isNaN(n) ? 0 : parseInt(n);	
 	}
-	var result = 0;
-	for(var i=0;i<arguments.length;i++)
-		result += parseArg(arguments[i]);
-	return result;
+	return arguments.length <= 1 ? parseArg(arguments[0]) 
+		: parseArg(arguments[0]) + add.apply(this,[].splice.call(arguments,1));
 }
