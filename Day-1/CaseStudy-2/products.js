@@ -45,3 +45,14 @@ function filter(products,criteriaFn,prevResult){
 	if (criteriaFn(products[0])) prevResult.push(products[0]);
 	return filter([].splice.call(products,1),criteriaFn,prevResult);
 }
+
+function groupBy(products,keySelectorFn){
+	var groupedItems = {};
+	for(var i=0;i<products.length;i++){
+		var product = products[i];
+			key = keySelectorFn(product);
+		if (!groupedItems[key]) groupedItems[key] = [];
+		groupedItems[key].push(product);
+	}
+	return groupedItems;
+}
