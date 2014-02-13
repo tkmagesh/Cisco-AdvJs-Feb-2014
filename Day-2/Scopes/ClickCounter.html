@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Click Counter</title>
+	<script>
+	(function(window,document){
+		window.addEventListener("DOMContentLoaded",init);
+		var count = 0;
+		function init(){
+			document.getElementById("btnCount").addEventListener("click",onBtnCountClick);
+		}
+		function onBtnCountClick(){
+			count++;
+			displayCount(count);
+		}
+		function displayCount(count){
+			document.getElementById("divCount").innerText = count;
+		}
+
+	})(window,document);
+	//app();
+	</script>
+</head>
+<body>
+	<input type="button" value="Count" id="btnCount"  onclick="">
+	<div id="divCount"></div>
+</body>
+</html>

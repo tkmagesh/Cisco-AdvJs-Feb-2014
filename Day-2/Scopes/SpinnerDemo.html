@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Spinner Demo</title>
+	<script>
+		function getSpinner(){
+			var currValue = 0,
+				_subscribers = {};
+			function triggerSubscribers(evtName){
+				for(var i=0;i<_subscribers[evtName].length;i++){
+					setTimeout(_subscribers[evtName][i]);
+				}
+			}
+			return {
+				up : function(){
+					triggerSubscribers('up');
+					return ++currValue;
+				},
+				down : function(){
+					triggerSubscribers('down');
+					return --currValue;
+				},
+				addSubscriber : function(evtName, subscriberFn){
+					if (!_subscribers[evtName]) _subscribers[evtName] = [];
+					_subscribers[evtName].push(subscriberFn);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
