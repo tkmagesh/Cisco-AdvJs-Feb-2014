@@ -8,9 +8,20 @@
 			var currValue = 0,
 				_subscribers = {};
 			function triggerSubscribers(evtName){
-				for(var i=0;i<_subscribers[evtName].length;i++){
-					setTimeout(_subscribers[evtName][i]);
-				}
+				/*for(var i=0;i<_subscribers[evtName].length;i++){
+					setTimeout(function(){
+						console.log(i);
+					})	;
+				}*/
+				/*for(var i=0;i<_subscribers[evtName].length;i++){
+					(function(index){
+						setTimeout(_subscribers[evtName][index]);	
+					})(i);
+					
+				}*/
+				_subscribers[evtName].forEach(function(f){
+					setTimeout(f);
+				});
 			}
 			return {
 				up : function(){
